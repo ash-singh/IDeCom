@@ -1,29 +1,47 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { IDeCom_backend } from 'declarations/IDeCom_backend';
+import { ProductsPage } from './ProductsPage';
 
 function App() {
-  const [greeting, setGreeting] = useState('');
+  const [user, setUser] = useState('');
+  const inputRef = useRef(null);
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    const name = event.target.elements.name.value;
-    IDeCom_backend.greet(name).then((greeting) => {
-      setGreeting(greeting);
+  function handleLogin(event) {
+    const username = inputRef.current.value;
+
+    IDeCom_backend.login(username).then((user) => {
+      setUser(user.username);
     });
     return false;
   }
 
+  function handleLogout() {
+    setUser('');
+  }
+
   return (
     <main>
-      <img src="/logo2.svg" alt="DFINITY logo" />
-      <br />
-      <br />
-      <form action="#" onSubmit={handleSubmit}>
-        <label htmlFor="name">Enter your name: &nbsp;</label>
-        <input id="name" alt="Name" type="text" />
-        <button type="submit">Click Me!</button>
-      </form>
-      <section id="greeting">{greeting}</section>
+      { user == '' && (
+        <form action="#" className='App'>
+          <br></br>
+          <label htmlFor="username">Enter your username: &nbsp;</label>
+          <input id="username" alt="username" type="text" ref={inputRef}/>
+          <button type="button" onClick={handleLogin}>Login!</button>
+        </form>
+      )}
+
+      { user != '' && (
+        <div className='App'> 
+          <br></br>
+          <span> Welcome {user} </span>
+          <button type="button" onClick={handleLogout}>Logout!</button>
+        </div>
+      )}
+
+      <div className="App">
+        <ProductsPage/>
+      </div>
+
     </main>
   );
 }
