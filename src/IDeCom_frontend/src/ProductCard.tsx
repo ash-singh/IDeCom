@@ -24,7 +24,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({product, onEdit}: Produ
             <strong>{product.name}</strong>
           </h5>
           <p>{formatDescription(product.description)}</p>
-          <p>Budget : {product.budget.toLocaleString()}</p>
+          <p>Price : {product.price.toLocaleString()}</p>
           {/* <button className=" bordered" onClick={() =>{handleEditClick(product)}}>
             <span className="icon-edit "></span>
             Edit

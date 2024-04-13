@@ -4,6 +4,10 @@
       "main": "src/IDeCom_backend/main.mo",
       "type": "motoko"
     },
+    "IDeCom_product": {
+      "main": "src/IDeCom_product/main.mo",
+      "type": "motoko"
+    },
     "IDeCom_frontend": {
       "dependencies": [
         "IDeCom_backend"

@@ -5,9 +5,10 @@ interface Initializer {
   name : string | '';
   description: string | '';
   imageUrl : string | '';
-  contractTypeId : number;
-  contractSignedOn: any;
-  budget: number;
+  categoryId : number;
+  createdOn: any;
+  price: number;
+  currency: string;
   isActive : boolean;
 }
 
@@ -16,9 +17,10 @@ interface Initializer {
    readonly name: string;
    readonly description: string ;
    readonly imageUrl: string;
-   readonly contractTypeId: number;
-   readonly contractSignedOn: Date;
-   readonly budget: number;
+   readonly categoryId: number;
+   readonly createdOn: Date;
+   readonly price: number;
+   readonly currency: string;
    readonly isActive: boolean;
 
    constructor(initializer: Initializer) {
@@ -26,9 +28,10 @@ interface Initializer {
      this.name = '';
      this.description = '';
      this.imageUrl = '';
-     this.contractTypeId = 0;
-     this.contractSignedOn = new Date();
-     this.budget = 0;
+     this.categoryId = 0;
+     this.createdOn = new Date();
+     this.price = 0;
+     this.currency = '';
      this.isActive = false;
 
      if (!initializer) return;
@@ -38,11 +41,12 @@ interface Initializer {
      if (initializer.name) this.name = initializer.name;
      if (initializer.description) this.description = initializer.description;
      if (initializer.imageUrl) this.imageUrl = initializer.imageUrl;
-     if (initializer.contractTypeId)
-       this.contractTypeId = initializer.contractTypeId;
-     if (initializer.contractSignedOn)
-       this.contractSignedOn = initializer.contractSignedOn;
-     if (initializer.budget) this.budget = initializer.budget;
+     if (initializer.categoryId)
+       this.categoryId = initializer.categoryId;
+     if (initializer.createdOn)
+       this.createdOn = initializer.createdOn;
+     if (initializer.price) this.price = initializer.price;
+     if (initializer.currency) this.currency = initializer.currency;
      if (initializer.isActive) this.isActive = initializer.isActive;
    }
 

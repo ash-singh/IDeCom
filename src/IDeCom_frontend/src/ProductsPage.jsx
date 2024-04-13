@@ -1,48 +1,41 @@
+import { IDeCom_product } from 'declarations/IDeCom_product';
 import {ProductList} from "./ProductList";
-import {MOCK_PRODUCTS} from "./MockProducts";
 import Product from "./Product";
 import React, {useEffect, useState} from "react";
 
-export const ProductsPage: React.FC = () => {
-  const [products, setProducts] = useState<Product[]>([]);
+export const ProductsPage = () => {
+  const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string|null>(null);
+  const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     loadProjects(currentPage);
   }, [currentPage])
 
-  const onSave = (product: Product) => {
+  const onSave = (product) => {
     console.log('Saving products: ', product);
 
     updateProduct(product);
   }
 
-  async function updateProduct(product: Product) {
-    
+  async function updateProduct(product) {
   }
 
-  async function loadProjects (page: number)  {
+  async function loadProjects (page)  {
     setLoading(true);
-    setProducts(MOCK_PRODUCTS)
+    // setProducts(MOCK_PRODUCTS)
     setLoading(false);
-    // try {
-    //   const data  = await ProjectAPI.get(page,3);
+    IDeCom_product.getProducts("no search").then((data) => {
+      if (currentPage == 1) {
+        setProducts(data);
+      } else {
+        setProducts((projects) => [...projects, ...data]);
+      }
 
-    //   if (currentPage == 1) {
-    //     setProjects(data);
-    //   } else {
-    //     setProjects((projects) => [...projects, ...data]);
-    //   }
-
-    //   setError(null);
-    //   setLoading(false);
-    // } catch (e) {
-    //   if (e instanceof Error) setError(e.message);
-    // } finally {
-    //   setLoading(false);
-    // }
+      setError(null);
+      setLoading(false);
+    });
   }
 
   const handleMoreClick = () => {

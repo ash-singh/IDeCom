@@ -10,7 +10,7 @@ interface ProductFormProps {
 type Errors = {
   name: string,
   description: string
-  budget: string
+  price: string
 }
 
 export const ProductForm : React.FC<ProductFormProps> = ({product: initialProduct, onSave, onCancel }) => {
@@ -18,7 +18,7 @@ export const ProductForm : React.FC<ProductFormProps> = ({product: initialProduc
   const [errors, setErrors] = useState<Errors>({
     name: '',
     description: '',
-    budget: ''
+    price: ''
   });
 
   const handleSubmit = (event : SyntheticEvent) => {
@@ -52,7 +52,7 @@ export const ProductForm : React.FC<ProductFormProps> = ({product: initialProduc
   }
 
   const validate = (product: Product) : Errors => {
-    let errors = { name: '', description: '', budget: ''};
+    let errors = { name: '', description: '', price: ''};
 
     if (product.name.length === 0) {
       errors.name = 'Name is required';
@@ -66,8 +66,8 @@ export const ProductForm : React.FC<ProductFormProps> = ({product: initialProduc
       errors.description = 'Description is required';
     }
 
-    if (product.budget === 0) {
-      errors.budget = 'Budget must be more than $0.';
+    if (product.price === 0) {
+      errors.price = 'Price must be more than $0.';
     }
 
     return errors;
@@ -77,7 +77,7 @@ export const ProductForm : React.FC<ProductFormProps> = ({product: initialProduc
     return (
       errors.name.length === 0 &&
       errors.description.length === 0 &&
-      errors.budget.length === 0
+      errors.price.length === 0
     );
   }
 
@@ -110,17 +110,17 @@ export const ProductForm : React.FC<ProductFormProps> = ({product: initialProduc
         </div>
       )}
 
-      <label htmlFor="budget">Product Budget</label>
+      <label htmlFor="price">Product Budget</label>
       <input
         type="number"
-        name="budget"
-        placeholder="enter budget"
-        value={product.budget}
+        name="price"
+        placeholder="enter price"
+        value={product.price}
         onChange={handleChange}
       />
-      {errors.budget.length > 0 && (
+      {errors.price.length > 0 && (
         <div className="card error">
-          <p>{errors.budget}</p>
+          <p>{errors.price}</p>
         </div>
       )}
 
