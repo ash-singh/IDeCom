@@ -8,3 +8,6 @@ deloy:
 local-fe:
 	@echo "starting local frontend dev enironment"
 	npm start
+
+dfx-start:
+	dfx start --background --clean

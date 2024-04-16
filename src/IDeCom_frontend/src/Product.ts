@@ -5,6 +5,7 @@ interface Initializer {
   name : string | '';
   description: string | '';
   imageUrl : string | '';
+  image: any;
   categoryId : number;
   createdOn: any;
   price: number;
@@ -17,6 +18,7 @@ interface Initializer {
    readonly name: string;
    readonly description: string ;
    readonly imageUrl: string;
+   readonly image: any;
    readonly categoryId: number;
    readonly createdOn: Date;
    readonly price: number;
@@ -28,6 +30,7 @@ interface Initializer {
      this.name = '';
      this.description = '';
      this.imageUrl = '';
+     this.image = '';
      this.categoryId = 0;
      this.createdOn = new Date();
      this.price = 0;
@@ -41,6 +44,7 @@ interface Initializer {
      if (initializer.name) this.name = initializer.name;
      if (initializer.description) this.description = initializer.description;
      if (initializer.imageUrl) this.imageUrl = initializer.imageUrl;
+     if (initializer.image) this.image = initializer.image;
      if (initializer.categoryId)
        this.categoryId = initializer.categoryId;
      if (initializer.createdOn)
