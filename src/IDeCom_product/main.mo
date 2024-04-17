@@ -3,6 +3,7 @@ import HashMap "mo:base/HashMap";
 import Text "mo:base/Text";
 import Iter "mo:base/Iter";
 import Hash "mo:base/Hash";
+import Bool "mo:base/Bool";
 import Types "types";
 
 actor Product {
@@ -20,14 +21,14 @@ actor Product {
   type GetProductsResult = Result.Result<[Product], Text>;
 
   // create product
-  public shared func createProduct(product: Product): async Product {
+  public shared func createProduct(product: Product): async Bool {
     switch(mapProducts.get(product.slug)) {
         case(null){
             mapProducts.put(product.slug, product);
-            return product;
+            return true;
         };
         case(? product){
-            return product;
+            return false;
         };
     };
   };

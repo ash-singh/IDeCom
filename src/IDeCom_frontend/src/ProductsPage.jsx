@@ -1,6 +1,5 @@
 import { IDeCom_product } from 'declarations/IDeCom_product';
 import {ProductList} from "./ProductList";
-import Product from "./Product";
 import React, {useEffect, useState} from "react";
 
 export const ProductsPage = () => {
@@ -13,19 +12,9 @@ export const ProductsPage = () => {
     loadProjects(currentPage);
   }, [currentPage])
 
-  const onSave = (product) => {
-    console.log('Saving products: ', product);
-
-    updateProduct(product);
-  }
-
-  async function updateProduct(product) {
-  }
-
   async function loadProjects (page)  {
     setLoading(true);
-    // setProducts(MOCK_PRODUCTS)
-    setLoading(false);
+  
     IDeCom_product.getProducts("no search").then((data) => {
       if (currentPage == 1) {
         setProducts(data);
@@ -44,7 +33,6 @@ export const ProductsPage = () => {
 
   return (
     <>
-      <h1> Products</h1>
       { error != null && (
         <div className="row">
           <div className="card large error">
@@ -58,7 +46,7 @@ export const ProductsPage = () => {
         </div>
       )}
 
-      <ProductList onSave={onSave} products={products}/>
+      <ProductList products={products}/>
 
       {!loading && !error  && (
         <div className="row">

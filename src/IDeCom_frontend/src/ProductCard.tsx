@@ -7,13 +7,9 @@ function formatDescription(description: string): string {
 
 interface ProductCardProps {
   product: Product;
-  onEdit: (product: Product) => void;
 }
 
-export const ProductCard: React.FC<ProductCardProps> = ({product, onEdit}: ProductCardProps) => {
-  const handleEditClick = (productBeingEdited: Product) => {
-    onEdit(productBeingEdited);
-  };
+export const ProductCard: React.FC<ProductCardProps> = ({product}: ProductCardProps) => {
 
   return (
     <div key={product.id} className="cols-sm">

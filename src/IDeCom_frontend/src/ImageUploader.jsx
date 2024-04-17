@@ -25,7 +25,6 @@ function ImageUploader() {
       try {
         const blob = await getFileBlob(file);
         const bufferPromise = await blob.arrayBuffer();
-        
         // Set the blob in state
         setImageBlob(blob);
         setImageTransit(bufferPromise);
@@ -47,6 +46,7 @@ function ImageUploader() {
         id: 1,
         categoryId: 1,
         name: 'Dining chair',
+        seller: localStorage.getItem('username'),
         slug: 'Kitchen+&+Dining+Chairs',
         description: 'Fully-configurable black box framework. Ullam occaecati libero laudantium nihil voluptas omnis.',
         isActive: true,

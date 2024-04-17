@@ -1,28 +1,42 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { IDeCom_backend } from 'declarations/IDeCom_backend';
 import { ProductsPage } from './ProductsPage';
-import ImageUploader from './ImageUploader';
+import { SellerPage } from './SellerPage';
 
 function App() {
-  const [user, setUser] = useState('');
+  const [username, setUsername] = useState('');
+  const [sellerToggle, setSellerToggle] = useState(false);
   const inputRef = useRef(null);
+
+  useEffect(() => {
+    const username = localStorage.getItem('username');
+    if (username != '') {
+      setUsername(username);
+    }
+  }, []);
 
   function handleLogin(event) {
     const username = inputRef.current.value;
 
     IDeCom_backend.login(username).then((user) => {
-      setUser(user.username);
+      setUsername(user.username);
+      localStorage.setItem('username', user.username);
     });
     return false;
   }
 
   function handleLogout() {
-    setUser('');
+    setUsername('');
+    localStorage.removeItem('username');
   }
+
+  const handleToggleChange = () => {
+    setSellerToggle(!sellerToggle);
+  };
 
   return (
     <main>
-      { user == '' && (
+      { username == '' && (
         <form action="#" className='App'>
           <br></br>
           <label htmlFor="username">Enter your username: &nbsp;</label>
@@ -31,18 +45,30 @@ function App() {
         </form>
       )}
 
-      { user != '' && (
+      { username != '' && (
         <div className='App'> 
           <br></br>
-          <span> Welcome {user} </span>
+          <span> Welcome {username} </span>
           <button type="button" onClick={handleLogout}>Logout!</button>
         </div>
       )}
 
-      <ImageUploader></ImageUploader>
+    <div>
+      <button onClick={handleToggleChange}>
+        {sellerToggle ? 'Seller' : 'Buyer'}
+      </button>
+    </div>
+
+    {sellerToggle && (
+      <SellerPage/>
+    )}
+
+    {!sellerToggle && (
       <div className="App">
+        <h1> Products</h1>
         <ProductsPage/>
       </div>
+    )}
 
     </main>
   );
