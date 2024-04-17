@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react';
 import { IDeCom_backend } from 'declarations/IDeCom_backend';
 import { ProductsPage } from './ProductsPage';
+import ImageUploader from './ImageUploader';
 
 function App() {
   const [user, setUser] = useState('');
@@ -38,6 +39,7 @@ function App() {
         </div>
       )}
 
+      <ImageUploader></ImageUploader>
       <div className="App">
         <ProductsPage/>
       </div>

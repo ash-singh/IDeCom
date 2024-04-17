@@ -18,17 +18,13 @@ export const ProductCard: React.FC<ProductCardProps> = ({product, onEdit}: Produ
   return (
     <div key={product.id} className="cols-sm">
       <div className="card">
-        <img src={product.imageUrl} alt={product.name} />
+        <img src={ URL.createObjectURL(new Blob([product.image], { type: 'image/png' }))} style={{width: "80%",height: "40%"}} alt={product.name} />
         <section className="section dark">
           <h5 className="strong">
             <strong>{product.name}</strong>
           </h5>
           <p>{formatDescription(product.description)}</p>
           <p>Price : {product.price.toLocaleString()}</p>
-          {/* <button className=" bordered" onClick={() =>{handleEditClick(product)}}>
-            <span className="icon-edit "></span>
-            Edit
-          </button> */}
         </section>
       </div>
     </div>

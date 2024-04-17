@@ -69,3 +69,19 @@ nav ul li:last-child:after {
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
+input {
+  padding: 8px 4px;
+  border: 1px solid #e8e8e8;
+  margin: 8px;
+}
+button {
+  padding: 8px 15px;
+  text-transform: uppercase;
+  font-weight: bolder;
+  background: rgb(54, 54, 255);
+  border: none;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+}
