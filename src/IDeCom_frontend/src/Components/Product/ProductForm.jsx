@@ -52,7 +52,6 @@ export const ProductForm = () => {
   const onSave = (product) => {
     // Here you can use the 'imageBlob' state for further processing, like sending it to the server
     if (imageBlob) {
-      
       const Product = {
         id: product.id,
         categoryId: product.categoryId,
@@ -140,7 +139,7 @@ export const ProductForm = () => {
 
   return (
     <form className="input-group vertical" onSubmit={handleSubmit}>
-      {message}
+      <h1>{message}</h1><br></br>
 
       <label htmlFor="name">Product Name</label>
       <input
@@ -197,7 +196,7 @@ export const ProductForm = () => {
         </div>
       )}
 
-      <label htmlFor="price">Product Budget</label>
+      <label htmlFor="price">Price</label>
       <input
         type="number"
         name="price"

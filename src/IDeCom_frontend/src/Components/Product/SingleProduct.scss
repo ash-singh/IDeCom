@@ -1,0 +1,138 @@
+.Product-card{
+    display: flex;
+    background-color: white;
+    flex-direction: row;
+    margin: 5%;
+    padding: 5%;
+}
+
+.Product-Img{
+ margin-left: 5%;
+}
+
+.Product-Img img{
+    width: 200px;
+}
+
+.Product-Details{
+    flex: 0.7;
+    margin-left: 10%;
+}
+
+#Product-description{
+    word-wrap: break-word;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+#Product-price{
+    color: black;
+    font-weight: 600;
+}
+
+  .Product-Details button{
+    margin-top: 5%;
+    border: none;
+    color: white;
+    padding-left:5%;
+    padding-right:5%;
+    border-radius: 25px;
+    background-color: black;
+  }
+
+
+  @media screen and (max-width: 425px) {
+
+    .Product-card{
+        display: flex;
+        background-color: white;
+        flex-direction: row;
+        padding: 5%;
+        margin: 5%;
+    }
+   
+    .Product-Img img{
+        width: 70px;
+    }
+    #Product-description{
+        word-wrap: break-word;
+        font-size: 5px
+    }
+    
+
+    .Product-Details h2{
+       font-size: 5px;
+    }
+
+  }
+  
+  @media screen and (max-width: 768px) {
+
+  
+    #Product-description{
+        word-wrap: break-word;
+        font-size: 15px;
+    }
+    
+    .Product-Details{
+        flex: 1;
+        margin-left: 10%;
+    }
+
+    .Product-Details h2{
+       font-size: 20px;
+    }
+
+  }
+  
+  @media screen and (min-width: 1440px) {
+    .Product-card{
+        display: flex;
+        background-color: white;
+        flex-direction: row;
+        margin: 5% ;
+        padding: 5%;
+    }
+
+    .Product-Img img{
+        width: 400px;
+        height: 350px;
+    }
+
+    .Product-Img{
+        margin-left: 5%;
+        flex: 0.7;
+       }
+       
+       
+       .Product-Details{
+           flex: 1;
+           margin-left: 10%;
+       }
+       
+       #Product-description{
+           word-wrap: break-word;
+           margin-top: 5%;
+           margin-bottom: 5%;
+           font-size: 20px;
+       }
+       .Product-Details h2{
+        font-size: 50px;
+       }
+       #Product-price{
+           color: black;
+           font-weight: 600;
+           font-size: 20px;
+       }
+       
+       .Product-Details button{
+        margin-top: 5%;
+        border: none;
+        color: white;
+        padding: 3% 10%;
+        border-radius: 25px;
+        background-color: black;
+        font-size: 20px;
+      }
+    
+  }

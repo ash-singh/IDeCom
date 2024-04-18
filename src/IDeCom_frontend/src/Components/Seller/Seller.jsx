@@ -1,6 +1,6 @@
 import React from 'react';
-import {ProductForm} from "./ProductForm";
-import {ProductsPage} from "./ProductsPage";
+import {ProductForm} from "../Product/ProductForm";
+import {ProductsPage} from "../Product/ProductsPage";
 
 export const SellerPage = ({products}) => {
   

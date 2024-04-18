@@ -1,0 +1,128 @@
+.home_container{
+  overflow-x: hidden;
+  max-width: 100%;
+  margin: 0;
+  box-sizing: border-box;
+}
+.Services{
+  display: flex;
+  gap: 10%;
+  margin: 5%;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ccc;
+  padding: 5%;
+  box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.3);
+}
+
+.Services div{
+  flex: 1;
+}
+
+
+.vertical_line::after {
+  content: "";
+  display: block;
+  height: 15%; 
+  width: 2px; 
+  background-color: #e4e2e2; 
+  margin-left: 16%; 
+  position: absolute;
+  transform: translateY(-80%);
+}
+
+@media screen and (max-width: 414px) {
+
+  .Services h4{
+    font-size: 10px;
+  }
+  
+  .vertical_line::after {
+    content: "";
+    display: block;
+    height: 10%; 
+    width: 2px; 
+    background-color: #e4e2e2; 
+    margin-left: 16%; 
+    position: absolute;
+    transform: translateY(-110%);
+  }
+  
+}
+
+@media screen and (max-width: 768px) {
+
+  .vertical_line::after {
+    content: "";
+    display: block;
+    height: 20%; 
+    width: 2px; 
+    background-color: #e4e2e2; 
+    margin-left: 16%; 
+    position: absolute;
+    transform: translateY(-90%);
+  }
+  
+}
+
+@media screen and (max-width: 600px) {
+
+  .vertical_line::after {
+    content: "";
+    display: block;
+    height: 5%; 
+    width: 2px; 
+    background-color: #e4e2e2; 
+    margin-left: 16%; 
+    position: absolute;
+    transform: translateY(-80%);
+  }
+}
+  @media screen and (max-width: 425px) {
+
+    .vertical_line::after {
+      content: "";
+      display: block;
+      height: 10%; 
+      width: 2px; 
+      background-color: #e4e2e2; 
+      margin-left: 16%; 
+      position: absolute;
+      transform: translateY(-120%);
+    }
+    
+}
+
+
+
+@media screen and (min-width: 1440px) {
+  .Services h4{
+    font-size: 40px;
+  }
+  
+  .vertical_line::after {
+    content: "";
+    display: block;
+    height: 30%; 
+    width: 2px; 
+    background-color: #e4e2e2; 
+    margin-left: 16%; 
+    position: absolute;
+    transform: translateY(-90%);
+  }
+  .Services{
+    display: flex;
+    gap: 10%;
+    margin: 5% 6%;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ccc;
+    padding: 5%;
+    box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.3);
+  }
+}
+
+
+
+
+
