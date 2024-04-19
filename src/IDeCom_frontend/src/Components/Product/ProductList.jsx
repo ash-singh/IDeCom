@@ -7,9 +7,10 @@ import { Link } from 'react-router-dom';
 export const ProductList= ({products}) => {
   return (
     <div className="Row">
-      {products.map((Product) => (
+      {products.map((Product) =>(
+        
         <div className="column" key={Product.id}>
-          <Link to={`/products/${Product.slug}`}>
+          <Link to={`/products/${Product.id}`}>
             <ProductCard product={Product}/>
           </Link>
         </div>
