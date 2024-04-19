@@ -19,9 +19,6 @@ export const SellerPage = ({products}) => {
             { showForm && (
                 <ProductForm handleCancel={handleCancel}/>
             )}
-
-            <h1> My Products</h1>
-            <ProductsPage/>
         </>
     );
 }

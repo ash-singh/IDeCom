@@ -1,5 +1,6 @@
 import React from "react";
 import { addCart } from "../../redux/action";
+import { useDispatch } from "react-redux";
 
 function formatDescription(description) {
   return description.substring(0, 60) + '...';
@@ -7,6 +8,7 @@ function formatDescription(description) {
 
 
 export const ProductCard = ({product}) => {
+  const dispatch = useDispatch();
 
   const addProduct = (product) => {
     dispatch(addCart(product));

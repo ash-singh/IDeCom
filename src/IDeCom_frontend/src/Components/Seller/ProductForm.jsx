@@ -50,7 +50,7 @@ export const ProductForm = ({handleCancel}) => {
     const onSave = (product) => {
         const productPayload = {
             id: product.id,
-            categoryId: Number(product.categoryId),
+            category: product.category,
             name: product.name,
             seller: localStorage.getItem('username'),
             slug: product.name + "-slug",
@@ -138,9 +138,9 @@ export const ProductForm = ({handleCancel}) => {
     <>
       <form className="" onSubmit={handleAddProductSubmit}>
       <h1>{message}</h1><br></br>
-        <div class="mb-3">
-            <label for="name" class="form-label">Product Name</label>
-            <input type="text" name="name" class="form-control" onChange={handleChange} required/>
+        <div className="mb-3">
+            <label htmlFor="name" className="form-label">Product Name</label>
+            <input type="text" name="name" className="form-control" onChange={handleChange} required/>
             {errors.name.length > 0 && (
                 <div className="card error">
                 <p>{errors.name}</p>
@@ -148,9 +148,9 @@ export const ProductForm = ({handleCancel}) => {
             )} 
         </div>
 
-        <div class="mb-3">
-            <label for="description" class="form-label">Description</label>
-            <textarea name="description" class="form-control" onChange={handleChange} required/>
+        <div className="mb-3">
+            <label htmlFor="description" className="form-label">Description</label>
+            <textarea name="description" className="form-control" onChange={handleChange} required/>
             {errors.name.length > 0 && (
                 <div className="card error">
                 <p>{errors.name}</p>
@@ -158,9 +158,9 @@ export const ProductForm = ({handleCancel}) => {
             )} 
         </div>
 
-        <div class="mb-3">
-            <label for="id" class="form-label">Product Code</label>
-            <input type="number" name="id" class="form-control" onChange={handleChange} required/>
+        <div className="mb-3">
+            <label htmlFor="id" className="form-label">Product Code</label>
+            <input type="number" name="id" className="form-control" onChange={handleChange} required/>
             {errors.code.length > 0 && (
                 <div className="card error">
                 <p>{errors.code}</p>
@@ -168,43 +168,43 @@ export const ProductForm = ({handleCancel}) => {
             )}
         </div>
 
-        <div class="mb-3">
-            <label for="categoryId" class="form-label">Product Category</label>
-            <select name="categoryId" class="form-control" onChange={handleChange} required>
+        <div className="mb-3">
+            <label htmlFor="category" className="form-label">Product Category</label>
+            <select name="category" className="form-control" onChange={handleChange} required>
                 <option value="">None</option>
-                <option value="1">Furniture</option>
-                <option value="2">Electronics</option>
-                <option value="3">Cloths</option>
+                <option value="furniture">Furniture</option>
+                <option value="electronics">Electronics</option>
+                <option value="cloths">Cloths</option>
             </select>
         </div>
 
-        <div class="mb-3">
-            <label for="price" class="form-label">Price</label>
-            <input type="number" name="price" class="form-control" onChange={handleChange} required/>
+        <div className="mb-3">
+            <label htmlFor="price" className="form-label">Price</label>
+            <input type="number" name="price" className="form-control" onChange={handleChange} required/>
             {errors.price.length > 0 && (
                 <div className="card error">
                 <p>{errors.price}</p>
                 </div>
             )}
         </div>
-        <div class="mb-3">
-            <label for="currency" class="form-label">Currency</label>
-            <select name="currency" class="form-control" onChange={handleChange} required>
+        <div className="mb-3">
+            <label htmlFor="currency" className="form-label">Currency</label>
+            <select name="currency" className="form-control" onChange={handleChange} required>
                 <option value="">None</option>
                 <option value="EUR">EUR</option>
-                <option value="ICO">ICP</option>
+                <option value="ICP">ICP</option>
                 <option value="BTC">BTC</option>
             </select>
         </div>
 
-        <div class="mb-3">
-            <label for="isActive" class="form-label">Is Active?</label>
-            <input type="checkbox" name="isActive" class="form-control" onChange={handleChange}/>
+        <div className="mb-3">
+            <label htmlFor="isActive" className="form-label">Is Active?</label>
+            <input type="checkbox" name="isActive" className="form-control" onChange={handleChange}/>
         </div>
 
-        <div class="mb-3">
-            <label for="productImage" class="form-label">Product Image</label>
-            <input type="file" name="productImage" accept="image/*" class="form-control" onChange={handleFileInputChange} required/>
+        <div className="mb-3">
+            <label htmlFor="productImage" className="form-label">Product Image</label>
+            <input type="file" name="productImage" accept="image/*" className="form-control" onChange={handleFileInputChange} required/>
             {imageBlob && (
               <div>
                 <p>Preview:</p>

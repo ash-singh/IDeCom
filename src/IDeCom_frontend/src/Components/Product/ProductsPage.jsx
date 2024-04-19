@@ -19,9 +19,9 @@ export const ProductsPage = () => {
 
         IDeCom_product.getProducts("no search").then((data) => {
             if (currentPage == 1) {
-            setProducts(data);
+                setProducts(data);
             } else {
-            setProducts((projects) => [...projects, ...data]);
+                setProducts((products) => [...products, ...data]);
             }
 
             setError(null);
@@ -35,35 +35,17 @@ export const ProductsPage = () => {
 
     return (
         <>
-            {/* { error != null && (
-            {error}
-            )} */}
             <div>
-            <div className="Category_Container">
-                <div className="Category_Items">
-                <button onClick={() => setSelectedCategory(0)}>All</button>
-                </div>
-                <div className="Category_Items">
-                <button onClick={() => setSelectedCategory(1)}>Furniture</button>
-                </div>
-                <div className="Category_Items">
-                <button onClick={() => setSelectedCategory(2)}>Electronics</button>
-                </div>
-                <div className="Category_Items">
-                <button onClick={() => setSelectedCategory(3)}>Cloths</button>
-                </div>
+            <div className="Container">
+                <ProductList products={products}/>
+
+                {loading && (
+                    <div className="center-page">
+                    <span className="spinner primary"></span>
+                    <p>Loading...</p>
+                    </div>
+                )}
             </div>
-
-                <div className="Container">
-                    <ProductList products={products}/>
-
-                    {loading && (
-                        <div className="center-page">
-                        <span className="spinner primary"></span>
-                        <p>Loading...</p>
-                        </div>
-                    )}
-                </div>
             </div>
 
             {/* {!loading && !error  && (
