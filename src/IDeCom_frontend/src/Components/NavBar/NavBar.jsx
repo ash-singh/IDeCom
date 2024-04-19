@@ -10,7 +10,6 @@ let NavBar = () => {
     const navigate = useNavigate();
 
     const handleLogout =() => {
-        console.log("logout");
         localStorage.removeItem('username');;
         navigate("/");
     }
@@ -20,7 +19,7 @@ let NavBar = () => {
       <div className="nav_container">
         <Link to="/" >
           <div className="nav_logo">
-            IDecom
+            IDeCom
           </div>
         </Link>
 
@@ -30,8 +29,20 @@ let NavBar = () => {
           </Link>
         </div>
 
+        { authenticated && (
+            <div className="nav_items">
+            <Link to="/seller">
+                <div>Seller </div>
+            </Link>
+          </div>
+        )}
 
         <div className="nav_btn">
+            <Link to="/cart" >
+                <div >
+                <i className="uil uil-shopping-bag"></i>Cart ({state.length})
+                </div>
+            </Link>
           { !authenticated && (
             <Link to="/login">
               <div >
@@ -42,23 +53,14 @@ let NavBar = () => {
 
           { authenticated && (
             <>
-                <button type="button" className="uil uil-user" onClick={handleLogout}>Logout!</button>
-
                 <div className="nav_items">
-                <Link to="/seller">
-                    <div>Seller </div>
-                </Link>
+                    <div onClick={handleLogout}>
+                        <i className="uil uil-user"></i>Logout
+                    </div>
                 </div>
             </>
           )}
-
-          <Link to="/cart" >
-            <div >
-              <i className="uil uil-shopping-bag"></i>Cart ({state.length})
-            </div>
-          </Link>
         </div>
-
       </div>
     </header>
   )

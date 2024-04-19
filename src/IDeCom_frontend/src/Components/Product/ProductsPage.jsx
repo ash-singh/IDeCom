@@ -39,7 +39,7 @@ export const ProductsPage = () => {
         {error}
       )} */}
       <div>
-        <h2 className="Category_title">PRODUCT OVERVIEW</h2>
+        {/* <h2 className="Category_title">PRODUCT OVERVIEW</h2> */}
         <div className="Category_Container">
           <div className="Category_Items">
             <button onClick={() => setSelectedCategory('all')}>All Products</button>

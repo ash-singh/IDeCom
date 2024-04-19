@@ -11,7 +11,7 @@ const Errors = {
   price: ''
 }
 
-export const ProductForm = () => {
+export const ProductForm = ({handleCancel}) => {
   const [product, setProduct] = useState('');
   const [errors, setErrors] = useState(Errors);
   const [imageBlob, setImageBlob] = useState(null);
@@ -223,7 +223,7 @@ export const ProductForm = () => {
       <div className="input-group">
         <button className="primary bordered medium">Save</button>
         <span />
-        <button type="button" className="bordered medium" >cancel </button>
+        <button type="button" className="bordered medium" onClick={handleCancel} >cancel </button>
       </div>
     </form>
   );
