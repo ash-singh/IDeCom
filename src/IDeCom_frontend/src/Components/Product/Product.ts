@@ -3,6 +3,7 @@ import {number} from "prop-types";
 interface Initializer {
   id: number| undefined;
   name : string | '';
+  seller: string | '';
   description: string | '';
   imageUrl : string | '';
   image: any;
@@ -16,6 +17,7 @@ interface Initializer {
  class Product {
    readonly id: number | undefined;
    readonly name: string;
+   readonly seller: string;
    readonly description: string ;
    readonly imageUrl: string;
    readonly image: any;
@@ -28,6 +30,7 @@ interface Initializer {
    constructor(initializer: Initializer) {
      this.id = undefined;
      this.name = '';
+     this.seller = '';
      this.description = '';
      this.imageUrl = '';
      this.image = '';
@@ -39,9 +42,8 @@ interface Initializer {
 
      if (!initializer) return;
      if (initializer.id) this.id = initializer.id;
-     if (!initializer) return;
-     if (initializer.id) this.id = initializer.id;
      if (initializer.name) this.name = initializer.name;
+     if (initializer.seller) this.seller = initializer.seller;
      if (initializer.description) this.description = initializer.description;
      if (initializer.imageUrl) this.imageUrl = initializer.imageUrl;
      if (initializer.image) this.image = initializer.image;

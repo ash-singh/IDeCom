@@ -1,48 +1,53 @@
-import { useRef, useState } from 'react';
-import { IDeCom_backend } from 'declarations/IDeCom_backend';
-import { ProductsPage } from './ProductsPage';
-import ImageUploader from './ImageUploader';
+import { useState } from 'react';
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
+import { Provider } from 'react-redux';
+import store from './redux/store';
+import Login from './Components/Login/Login';
+import Home from './Components/Home/Home';
+import NavBar from './Components/NavBar/NavBar';
+import { SellerPage } from './Components/Seller/Seller';
+import SingleProduct from './Components/Product/SingleProduct';
+import Cart from './Components/Cart/Cart';
+import Checkout from './Components/Checkout/Checkout';
 
 function App() {
-  const [user, setUser] = useState('');
-  const inputRef = useRef(null);
+  const [sellerToggle, setSellerToggle] = useState(false);
 
-  function handleLogin(event) {
-    const username = inputRef.current.value;
-
-    IDeCom_backend.login(username).then((user) => {
-      setUser(user.username);
-    });
-    return false;
-  }
-
-  function handleLogout() {
-    setUser('');
-  }
+  const handleToggleChange = () => {
+    setSellerToggle(!sellerToggle);
+  };
 
   return (
     <main>
-      { user == '' && (
-        <form action="#" className='App'>
-          <br></br>
-          <label htmlFor="username">Enter your username: &nbsp;</label>
-          <input id="username" alt="username" type="text" ref={inputRef}/>
-          <button type="button" onClick={handleLogin}>Login!</button>
-        </form>
-      )}
+      <Router>
+      <Provider store={store}>
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/products/:id" element={<SingleProduct />}></Route>
+          <Route path="/cart" element={<Cart/>}></Route>
+          <Route path="/checkout" element={<Checkout/>}></Route>
+          <Route path="/login" element={<Login/>}></Route>
+          <Route path="/seller" element={<SellerPage/>}></Route>
+        </Routes>
+        </Provider>
+      </Router>
+    <div>
+      {/* <button onClick={handleToggleChange}>
+        {sellerToggle ? 'Switch to Buyer' : 'Switch to Seller'}
+      </button> */}
+    </div>
 
-      { user != '' && (
-        <div className='App'> 
-          <br></br>
-          <span> Welcome {user} </span>
-          <button type="button" onClick={handleLogout}>Logout!</button>
-        </div>
-      )}
+    {/* {sellerToggle && (
+      <SellerPage/>
+    )}
 
-      <ImageUploader></ImageUploader>
+    {!sellerToggle && (
       <div className="App">
+        <h1> Products</h1>
         <ProductsPage/>
       </div>
+    )} */}
 
     </main>
   );

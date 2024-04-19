@@ -8,12 +8,14 @@ module {
     id: Nat;
     name: Text;
     slug: Text;
+    seller: Text;
     description: Text;
-    imageUrl: Text;
     image: Blob;
     categoryId: Nat8;
     price: Nat;
     currency: Text;
     isActive: Bool;
   };
+
+  public type ProductId = Nat;
 }
