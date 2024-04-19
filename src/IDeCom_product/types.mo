@@ -11,7 +11,7 @@ module {
     seller: Text;
     description: Text;
     image: Blob;
-    categoryId: Nat8;
+    category: Text;
     price: Nat;
     currency: Text;
     isActive: Bool;

@@ -11,12 +11,6 @@ import Cart from './Components/Cart/Cart';
 import Checkout from './Components/Checkout/Checkout';
 
 function App() {
-  const [sellerToggle, setSellerToggle] = useState(false);
-
-  const handleToggleChange = () => {
-    setSellerToggle(!sellerToggle);
-  };
-
   return (
     <main>
       <Router>
@@ -33,21 +27,7 @@ function App() {
         </Provider>
       </Router>
     <div>
-      {/* <button onClick={handleToggleChange}>
-        {sellerToggle ? 'Switch to Buyer' : 'Switch to Seller'}
-      </button> */}
     </div>
-
-    {/* {sellerToggle && (
-      <SellerPage/>
-    )}
-
-    {!sellerToggle && (
-      <div className="App">
-        <h1> Products</h1>
-        <ProductsPage/>
-      </div>
-    )} */}
 
     </main>
   );

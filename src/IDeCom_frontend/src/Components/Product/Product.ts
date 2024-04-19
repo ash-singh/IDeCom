@@ -7,7 +7,7 @@ interface Initializer {
   description: string | '';
   imageUrl : string | '';
   image: any;
-  categoryId : number;
+  category : string;
   createdOn: any;
   price: number;
   currency: string;
@@ -21,7 +21,7 @@ interface Initializer {
    readonly description: string ;
    readonly imageUrl: string;
    readonly image: any;
-   readonly categoryId: number;
+   readonly category: string;
    readonly createdOn: Date;
    readonly price: number;
    readonly currency: string;
@@ -34,7 +34,7 @@ interface Initializer {
      this.description = '';
      this.imageUrl = '';
      this.image = '';
-     this.categoryId = 0;
+     this.category = '';
      this.createdOn = new Date();
      this.price = 0;
      this.currency = '';
@@ -47,8 +47,8 @@ interface Initializer {
      if (initializer.description) this.description = initializer.description;
      if (initializer.imageUrl) this.imageUrl = initializer.imageUrl;
      if (initializer.image) this.image = initializer.image;
-     if (initializer.categoryId)
-       this.categoryId = initializer.categoryId;
+     if (initializer.category)
+       this.category = initializer.category;
      if (initializer.createdOn)
        this.createdOn = initializer.createdOn;
      if (initializer.price) this.price = initializer.price;
