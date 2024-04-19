@@ -42,7 +42,7 @@ export const ProductForm = ({handleCancel}) => {
       }
     }
   };
-  const handleSubmit = (event) => {
+  const handleAddProductSubmit = (event) => {
     event.preventDefault();
 
     if (!isValid()) return;
@@ -62,7 +62,7 @@ export const ProductForm = ({handleCancel}) => {
         isActive: product.isActive,
         price: product.price,
         image: new Uint8Array(imageTransit),
-        currency: "EUR",
+        currency: product.currency,
       };
       console.log(Product);
 
@@ -70,6 +70,7 @@ export const ProductForm = ({handleCancel}) => {
         console.log(result)
         if (result) {
           setMessage("added product");
+          handleCancel();
         } else {
           setMessage("failed to add message!");
         }
@@ -138,93 +139,87 @@ export const ProductForm = ({handleCancel}) => {
   }
 
   return (
-    <form className="input-group vertical" onSubmit={handleSubmit}>
+    <>
+      <form className="" onSubmit={handleAddProductSubmit}>
       <h1>{message}</h1><br></br>
-
-      <label htmlFor="name">Product Name</label>
-      <input
-        type="text"
-        name="name"
-        placeholder="enter name"
-        value={product?.name}
-        onChange={handleChange}
-      />
-      {errors.name.length > 0 && (
-        <div className="card error">
-          <p>{errors.name}</p>
+        <div class="mb-3">
+            <label for="name" class="form-label">Product Name</label>
+            <input type="text" name="name" class="form-control" onChange={handleChange}/>
+            {errors.name.length > 0 && (
+                <div className="card error">
+                <p>{errors.name}</p>
+                </div>
+            )} 
         </div>
-      )}
 
-      <label htmlFor="id">Code</label>
-      <input
-        type="number"
-        name="id"
-        placeholder="enter product code"
-        value={product?.id}
-        onChange={handleChange}
-      />
-      {errors.code.length > 0 && (
-        <div className="card error">
-          <p>{errors.code}</p>
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea name="description" class="form-control" onChange={handleChange}/>
+            {errors.name.length > 0 && (
+                <div className="card error">
+                <p>{errors.name}</p>
+                </div>
+            )} 
         </div>
-      )}
 
-      {/* <label htmlFor="code">Category</label>
-      <input
-        type="number"
-        name="category"
-        placeholder="enter product Category"
-        value={product?.categoryId}
-        onChange={handleChange}
-      />
-      {errors.category.length > 0 && (
-        <div className="card error">
-          <p>{errors.category}</p>
+        <div class="mb-3">
+            <label for="id" class="form-label">Product Code</label>
+            <input type="number" name="id" class="form-control" onChange={handleChange}/>
+            {errors.code.length > 0 && (
+                <div className="card error">
+                <p>{errors.code}</p>
+                </div>
+            )}
         </div>
-      )} */}
 
-      <label htmlFor="description">Description</label>
-      <textarea
-        name="description"
-        placeholder="enter description"
-        value={product?.description}
-        onChange={handleChange}
-      />
-      {errors.description.length > 0 && (
-        <div className="card error">
-          <p>{errors.description}</p>
+        <div class="mb-3">
+            <label for="categoryId" class="form-label">Product Category</label>
+            
+            <select name="categoryId" defaultValue="1" class="form-control" onChange={handleChange}>
+                <option value="1">Furniture</option>
+                <option value="2">Electronics</option>
+                <option value="3">Cloths</option>
+            </select>
+            {errors.category.length > 0 && (
+                <div className="card error">
+                <p>{errors.code}</p>
+                </div>
+            )}
         </div>
-      )}
 
-      <label htmlFor="price">Price</label>
-      <input
-        type="number"
-        name="price"
-        placeholder="enter price"
-        value={product?.price}
-        onChange={handleChange}
-      />
-      {errors.price.length > 0 && (
-        <div className="card error">
-          <p>{errors.price}</p>
+        <div class="mb-3">
+            <label for="price" class="form-label">Price</label>
+            <input type="number" name="price" class="form-control" onChange={handleChange}/>
+            {errors.price.length > 0 && (
+                <div className="card error">
+                <p>{errors.price}</p>
+                </div>
+            )}
         </div>
-      )}
+        <div class="mb-3">
+            <label for="currency" class="form-label">Currency</label>
+            <select name="currency" defaultValue="EUR" class="form-control" onChange={handleChange}>
+                <option value="ICO">ICP</option>
+                <option value="BTC">BTC</option>
+            </select>
+        </div>
 
-      <label htmlFor="isActive">Active?</label>
-      <input
-        type="checkbox"
-        name="isActive"
-        defaultChecked={product?.isActive}
-        onChange={handleChange}
-      />
+        <div class="mb-3">
+            <label for="isActive" class="form-label">Is Active?</label>
+            <input type="checkbox" name="isActive" class="form-control" onChange={handleChange}/>
+        </div>
 
-      <input type="file" accept="image/*" onChange={handleFileInputChange} />
+        <div class="mb-3">
+            <label for="productImage" class="form-label">Product Image</label>
+            <input type="file" name="productImage" accept="image/*" class="form-control" onChange={handleFileInputChange}/>
+        </div>
 
-      <div className="input-group">
-        <button className="primary bordered medium">Save</button>
-        <span />
-        <button type="button" className="bordered medium" onClick={handleCancel} >cancel </button>
-      </div>
+        <div className="input-group">
+            <button className="primary bordered medium">Save</button>
+            <span />
+            <button type="button" className="bordered medium" onClick={handleCancel} >cancel </button>
+        </div>
     </form>
+    </>
   );
 }
