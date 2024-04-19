@@ -192,7 +192,7 @@ export const ProductForm = ({handleCancel}) => {
             <select name="currency" className="form-control" onChange={handleChange} required>
                 <option value="">None</option>
                 <option value="EUR">EUR</option>
-                <option value="ICO">ICP</option>
+                <option value="ICP">ICP</option>
                 <option value="BTC">BTC</option>
             </select>
         </div>
