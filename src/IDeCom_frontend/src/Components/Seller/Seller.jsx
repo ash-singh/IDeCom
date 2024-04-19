@@ -1,14 +1,27 @@
-import React from 'react';
-import {ProductForm} from "../Product/ProductForm";
+import React, {useState} from "react";
+import {ProductForm} from "../Seller/ProductForm";
 import {ProductsPage} from "../Product/ProductsPage";
 
 export const SellerPage = ({products}) => {
-  
-  return (
-    <>
-      <ProductForm />
-      <h1> My Products</h1>
-      <ProductsPage/>
-    </>
-  );
+    const [showForm, setShowForm] = useState(false)
+
+    const handleClick = () => {
+        setShowForm(true);
+    };
+
+    const handleCancel = () => {
+        setShowForm(false);
+    };
+
+    return (
+        <>
+            <button onClick={handleClick}> Add New Product</button>
+            { showForm && (
+                <ProductForm handleCancel={handleCancel}/>
+            )}
+
+            <h1> My Products</h1>
+            <ProductsPage/>
+        </>
+    );
 }

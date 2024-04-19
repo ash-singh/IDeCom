@@ -11,3 +11,6 @@ local-fe:
 
 dfx-start:
 	dfx start --background --clean
+
+deploy-ic:
+	dfx deploy --network ic
