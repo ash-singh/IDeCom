@@ -1,6 +1,6 @@
 generate:
 	@echo "generate declarations"
-	dfx generate 
+	dfx generate
 
 deloy:
 	dfx deloy
@@ -14,3 +14,6 @@ dfx-start:
 
 deploy-ic:
 	dfx deploy --network ic
+
+undeploy-ic:
+	dfx canister stop --all --network ic
