@@ -75,26 +75,15 @@ input {
   border: 1px solid #e8e8e8;
   margin: 8px;
 }
+
 button {
-  padding: 8px 15px;
-  text-transform: uppercase;
+  padding: 10px 22px;
   font-weight: bolder;
-  background: rgb(54, 54, 255);
-  border: none;
-  color: #fff;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-//toggle style
-
-button {
-  padding: 10px 20px;
   border: none;
   border-radius: 5px;
   font-size: 16px;
   cursor: pointer;
-  background-color: #ddd;
+  background-color: #33FFD4;
 }
 
 button.on {
@@ -105,4 +94,8 @@ button.on {
 button.off {
   background-color: #d9534f;
   color: white;
+}
+
+a, a:link, a:visited, a:focus, a:hover, a:active{
+  text-decoration:none;
 }

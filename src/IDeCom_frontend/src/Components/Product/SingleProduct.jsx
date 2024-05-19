@@ -28,11 +28,10 @@ const SingleProduct = () => {
             } else {
                 setError("Error loading product details");
             }
-            
         });
     }, [id]);
 
-  
+
   return (
     <>
     <div className="Product-card">
@@ -45,7 +44,7 @@ const SingleProduct = () => {
         <div className="Product-Details">
         <h2>{product.title}</h2>
         <p id="Product-description">{product.description}</p>
-        <p id="Product-price">${Number(product.price)}</p>
+        <p id="Product-price"> Price: ${Number(product.price)}</p>
         <button onClick={() => addProduct(product)}>Add To Cart</button>
         </div>
     </div>
