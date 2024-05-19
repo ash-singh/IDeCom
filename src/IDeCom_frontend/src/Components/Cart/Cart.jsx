@@ -32,7 +32,7 @@ const Cart = () => {
 
   const ShowCart = () => {
     let subtotal = 0;
-    let shipping = 99;
+    let shipping = 5;
     let totalItems = 0;
     state.map((item) => {
       return (subtotal += Number(item.price)* item.qty);
@@ -62,7 +62,7 @@ const Cart = () => {
                                 data-mdb-ripple-color="light"
                               >
                                 <img
-                                  src={item.image}
+                                  src={ URL.createObjectURL(new Blob([item.image], { type: 'image/png' }))}
                                   alt={item.name}
                                   width={100}
                                   height={75}
@@ -72,25 +72,23 @@ const Cart = () => {
 
                             <div className="col-lg-5 col-md-6">
                               <p>
-                                <strong>{item.name}</strong>
+                                <strong>Name: {item.name}</strong>
                               </p>
                             </div>
 
                             <div className="col-lg-4 col-md-6">
-                              <div
-                                className="d-flex mb-4"
-                                style={{ maxWidth: "300px" }}
-                              >
+                              <div className="d-flex mb-4" style={{ maxWidth: "300px" }}>
                                 <button
                                   className="btn px-3"
                                   onClick={() => {
                                     removeItem(item);
                                   }}
                                 >
+                                  Remove
                                   <i class="uil uil-minus"></i>
                                 </button>
 
-                                <p className="mx-5">{item.qty}</p>
+                                <p className="mx-5"> Quantity: {item.qty}</p>
 
                                 <button
                                   className="btn px-3"
@@ -98,6 +96,7 @@ const Cart = () => {
                                     addItem(item);
                                   }}
                                 >
+                                  Add
                                   <i class="uil uil-plus"></i>
                                 </button>
                               </div>
@@ -105,7 +104,7 @@ const Cart = () => {
                               <p className="text-start text-md-center">
                                 <strong>
                                   <span className="text-muted">{item.qty}</span>{" "}
-                                  x ${item.price}
+                                  x ${item.price.toLocaleString()}
                                 </strong>
                               </p>
                             </div>
@@ -126,25 +125,12 @@ const Cart = () => {
                   <div className="card-body">
                     <ul className="list-group list-group-flush">
                       <li className="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
-                        Products ({totalItems})<span>${Math.round(subtotal)}</span>
-                      </li>
-                      <li className="list-group-item d-flex justify-content-between align-items-center px-0">
-                        Shipping
-                        <span>${shipping}</span>
-                      </li>
-                      <li className="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
-                        <div>
-                          <strong>Total amount</strong>
-                        </div>
-                        <span>
-                          <strong>${Math.round(subtotal + shipping)}</strong>
-                        </span>
+                        Total amount: <span>${Math.round(subtotal)}</span>
                       </li>
                     </ul>
 
                     <Link
                       to="/checkout"
-                      className="btn btn-dark btn-lg btn-block"
                     >
                       Go to checkout
                     </Link>

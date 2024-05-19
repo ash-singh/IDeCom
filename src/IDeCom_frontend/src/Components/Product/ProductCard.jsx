@@ -19,7 +19,7 @@ export const ProductCard = ({product}) => {
       <img src={ URL.createObjectURL(new Blob([product.image], { type: 'image/png' }))} className="card_img" alt={product.name} />
       <div className="card_body">
         <h5 className="card_title">{product.name}</h5>
-        <p className="card_text">${product.price.toLocaleString()}</p>
+        <p className="card_text"> Price: ${product.price.toLocaleString()}</p>
         <button onClick={() => addProduct(product)}>Add To Cart</button>
       </div>
     </div>
